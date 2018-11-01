@@ -1,0 +1,22 @@
+<p>
+  <strong>Web source:</strong>
+  <% source_mapping = {1 => 'Deutsche Oper Berlin', 2 => 'GORKI', 3 => 'Berghain Berlin'} %>
+  <%= source_mapping[@event.web_source] %>
+</p>
+
+<p>
+  <strong>Item ID:</strong>
+  <%= @event.item_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @event.date %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @event.title %>
+</p>
+
+<%= link_to 'Back to events', events_path %>
