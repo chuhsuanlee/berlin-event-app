@@ -1,0 +1,43 @@
+<h3>New Event</h3>
+
+<%= form_with scope: :event, url: events_path, local: true do |form| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@event.errors.count, "error") %> prohibited
+        this event from being saved:
+      </h2>
+      <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :web_source %><br>
+    <%= form.text_field :web_source %>
+  </p>
+
+  <p>
+    <%= form.label :item_id %><br>
+    <%= form.text_field :item_id %>
+  </p>
+
+  <p>
+    <%= form.label :date %><br>
+    <%= form.date_field :date %>
+  </p>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_area :title %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back to events', events_path %>

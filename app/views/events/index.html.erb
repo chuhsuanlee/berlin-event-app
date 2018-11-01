@@ -1,0 +1,37 @@
+<h1>Search events</h1>
+<!-- <%= link_to 'New event', new_event_path %> -->
+
+<%= form_tag(events_path, method: :get) do %>
+  <br>Web source <%= text_field_tag :web_source, params[:web_source] %>
+  <br>// please input the corresponding number
+  <br>1: Deutsche Oper Berlin
+  <br>2: GORKI
+  <br>3: Berghain Berlin
+  <br>
+  <br>Date
+  <br><%= date_field_tag :date, params[:date] %>
+  <br>
+  <br>Partial or complete text from event title
+  <br><%= text_field_tag :title, params[:title] %>
+  <br>
+  <br><%= submit_tag 'Search', name: nil %>
+<% end %>
+<br>
+<table width="100%" border="1">
+  <tr>
+    <th>Web source</th>
+    <th>Date</th>
+    <th>Title</th>
+    <th></th>
+  </tr>
+
+  <% @events.each do |event| %>
+  <% source_mapping = {1 => 'Deutsche Oper Berlin', 2 => 'GORKI', 3 => 'Berghain Berlin'} %>
+    <tr>
+      <td><%= source_mapping[event.web_source] %></td>
+      <td><%= event.date %></td>
+      <td><%= event.title %></td>
+      <td><%= link_to 'Show', event_path(event) %></td>
+    </tr>
+  <% end %>
+</table>
